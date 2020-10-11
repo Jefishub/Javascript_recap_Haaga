@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 8</title>
+        <!--funktio: Yritys maksaa tulospalkkiota 10% kuukausipalkasta. Tee ohjelma, joka laskee
+tulospalkkion suuruuden.
+function kerroTulospalkkio() {
+}
+Funktio tehdään painikkeelle.
+function laskeTulospalkka(kuukausipalkka) {
+}
+Funktio tehdään tulospalkkion laskemiseen. Funktioille menee parametrina kuukausipalkan
+suuruus ja funktio palauttaa tulospalkkion suuruuden. -->
+    </head>
+    <body>
+        <h3>Palkkalaskuri</h3>
+        <form>
+        <label>Kuukausipalkka</label>
+        <input type="text" id="palkka" size="7">
+        <input type="button" value="Laske" onclick=" kerroTulospalkkio()">
+        </form>
+
+        <div id="vastaus"></div>
+
+        <script>
+            var palkkio = 0;
+            function  kerroTulospalkkio() {
+                var palkka = parseInt(document.getElementById("palkka").value);
+                palkkio = laskeTulospalkka(palkka);
+                document.getElementById("vastaus").innerHTML = "<br>Tulospalkkio on " + palkkio.toFixed(2) + " euroa.";
+            }
+
+            function laskeTulospalkka(arvo){
+                return arvo*0.1
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 6</title>
+
+<!--taulukko: Tee ohjelma, joka näyttää kokeen arvosanatilaston taulukosta. Taulukossa on
+kullakin indeksillä tieto siitä, kuinka monta kertaa kyseistä arvosanaa on ollut kokeessa.
+Esimerkiksi taulukon 0. paikka kertoo, montako nollaa kokeessa on ollut. Alla arvosanaa 0 on
+ollut 3 kappaletta.
+Taulukko on
+var tilasto = [3, 4, 7, 6, 9, 4];-->
+    </head>
+<body>
+    <h3>Arvosanatilastot</h3>
+    <form>
+        <input type="button" value="Laske arvosanat" onclick="laskeArvosanat()">
+    </form>
+    <div id="vastaus"></div>
+
+    <script>
+        var tilasto = [3, 4, 7, 6, 9, 4];
+        var sum = tilasto.reduce(function(a, b){
+            return a + b;
+        }, 0);
+        function laskeArvosanat(){
+            var teksti = "";
+            for (var i = 0;i<tilasto.length;i++){
+                teksti += i + ": " + tilasto[i] + " kpl, " + (100*tilasto[i] / sum).toFixed(1) + "%<br>"; 
+            }
+    document.getElementById("vastaus").innerHTML = teksti;
+        }
+    </script>
+</body>
+</html>

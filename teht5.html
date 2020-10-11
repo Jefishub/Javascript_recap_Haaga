@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tehtävä 5</title>
+<!--taulukko: Mökkiläiset pelasivat minigolfia. Alla olevassa taulukossa on tulokset
+var minigolf = [23, 19, 37, 20, 21, 30, 26, 24];
+Tee ohjelma, joka kertoo
+a) taulukossa olevien pelien keskiarvon
+• Tee silmukka, joka summaa taulukossa olevat tulokset.
+• Keskiarvo lasketaan jakamalla tulosten summa taulukossa olevien tulosten
+lukumäärällä (minigolf.length).
+• toFixed(0)-metodi antaa vastauksen kokonaislukuna.
+b) suurimman ja pienimmän tuloksen.
+• alusta pienin ja suurin muuttuja taulukon 0:en paikan arvolla
+• tee silmukka, joka käy koko taulukon läpi. Tee silmukkaan if-lause, jolla
+tutkit, onko taulukossa oleva arvo pienempi kuin tähän mennessä pienin.
+• Tee samalla idealla suurimman etsiminen.-->
+</head>
+
+<body>
+    <h3>Minigolf</h3>
+    <form>
+
+    <input type="button" value="Laske tulokset" onclick="laskeArvot()">
+    </form>
+
+    <div id="vastaus"></div>
+
+
+    <script>
+        var minigolf = [23, 19, 37, 20, 21, 30, 26, 24];
+        function laskeArvot(){
+            var pienin = minigolf[0];
+            var suurin = minigolf[0];
+            var summa = 0;
+            var i,j;
+            for (i=0;i<minigolf.length;i++){
+                summa += minigolf[i];                
+            }
+
+            var keskiarvo = (summa / minigolf.length).toFixed(0);
+
+            for (j=0; j<minigolf.length-1;j++){
+                if (pienin > minigolf[j+1])
+                    pienin = minigolf[j+1];
+                if (suurin < minigolf[j+1])
+                    suurin = minigolf[j+1];
+            }
+
+            document.getElementById("vastaus").innerHTML = "Pienin peli on " + pienin + ".<br>" + 
+                                                            "Suurin peli on " + suurin + ".<br>" + 
+                                                            "Pelien keskiarvo on " + keskiarvo + ".";
+        }
+    </script>
+</body>
+</html>

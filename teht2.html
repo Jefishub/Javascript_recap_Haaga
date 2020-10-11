@@ -1,0 +1,33 @@
+<!--merkkijono: Tee ohjelma, joka kysyy päivämäärän muodossa vvvv-kk-pp ja muuntaa sen
+muotoon pp.kk.vvv. 
+-->
+
+<!DOCTYPE hmtl>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 2</title>
+    </head>
+    <body>
+        <h3>Päivämäärä</h3>
+
+        <form>
+            <label>Päivämäärä (vvvv-kk-pp): </label>
+            <input type="text" id="pvm" size="10">
+            <input type="button" value="Muunna" onclick="muunnaPvm()">
+        </form>
+    </body>
+
+    <div id="vastaus"></div>
+
+    <script type="text/javascript">
+    
+    function muunnaPvm() {
+        var pvm = document.getElementById("pvm").value;
+        var new_pvm = pvm.slice(8,10) + "." + pvm.slice(5,7) + "." + pvm.slice(0,4);
+    
+    document.getElementById("vastaus").innerHTML = new_pvm;
+    }
+    </script>
+</html>

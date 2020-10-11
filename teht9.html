@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 9</title>
+        <!--funktio: Tee ohjelma jolla voidaan laskea parkkimaksu. ParkkiPojat veloittaa 4 euroa/tunti.
+Maksimiveloitus on 30 euroa. Tee ohjelma, joka kysyy asiakkaan pysäköintiajan ja näyttää
+parkkimaksun suuruuden.
+
+Tee ohjelmaan funktio:
+laskeMaksu(parkkiaika)
+Funktio laskee ja palauttaa return-lauseella parkkimaksun suuruuden. Parametrina on
+parkkiaika.-->
+    </head>
+    <body>
+        <h3>Parkkimaksu</h3>
+        <form>
+            <label>Parkkiaika:</label>
+            <input type="text" id="aika" size="5">
+            <input type="button" value="Laske" onclick="laskeSumma()">
+        </form>
+
+        <div id="vastaus"></div>
+        <script>
+            var veloitus = 4;
+            var maksimi_veloitus = 30;
+            function laskeSumma(){
+                var aika = parseInt(document.getElementById("aika").value);
+                var parkkimaksu = laskeMaksu(aika)
+                document.getElementById("vastaus").innerHTML = "<br>Parkkimaksu on " + parkkimaksu + " euroa"; 
+            }
+            function laskeMaksu(aika){
+                var maksu = 0;
+                if (aika*veloitus < maksimi_veloitus)
+                    maksu = aika*veloitus;
+                else
+                    maksu = maksimi_veloitus;
+                return maksu;
+            }
+            
+        </script>
+    </body>
+</html>

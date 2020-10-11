@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 13</title>
+        <!--3.objektitaulukko: Tee ohjelma, jolla voidaan listata saaliit, selvittää tietyn kalalajin
+saalismäärä sekä lisätä uusi saalis. Kaikki tämän tehtävän ratkaisut voit laittaa
+samaan tiedostoon. Käytä pohjana taulukkoa-->
+    </head>
+    <body>
+        <h3>Kalajuttuja</h3>
+        <form>
+            <label>Laji:</label>
+            <input type="text" id="laji" size="10">
+            <input type="text" id="paino" size="10">
+            <input type="button" value="Hae saalis" onclick="haeSaalis()">
+            <input type="button" value="Listaa kalat" onclick="listaaKalat()">
+            <input type="button" value="Lisää kala" onclick="lisaaKala()">
+        </form>
+
+        <div id="vastaus"></div>
+        <div id="vastaus2"></div>
+    </body>
+
+    <script>
+        var kalat = [
+            { "laji" : "Ahven", "koko": 230,},
+            { "laji" : "Kuha", "koko": 2000,},
+            { "laji" : "Ahven", "koko": 200,},
+            { "laji" : "Ahven", "koko": 175,},
+            { "laji" : "Kuha", "koko": 1590,},
+            { "laji" : "Ahven", "koko": 175,},
+        ];
+
+        function listaaKalat(){
+            var teksti = "<br>";
+            for (var i = 0; i <= kalat.length; i++){
+                teksti += kalat[i].laji + " " + kalat[i].koko + " g<br>"
+            document.getElementById("vastaus").innerHTML=teksti;
+            }
+        }
+        
+        function haeSaalis(){
+            var kalalaji = document.getElementById("laji").value;
+            var kala_lkm = 0;
+            var kala_paino = 0;
+            for (var i = 0;i < kalat.length;i++){
+                if (kalat[i].laji == kalalaji){
+                    kala_lkm += 1;
+                    kala_paino+=kalat[i].koko;
+                }
+            }
+            if (kala_lkm == 0) {
+                document.getElementById("vastaus2").innerHTML = "<br>Yhtään kalaa ei ollut annetulla lajilla";
+            }
+            else {
+                document.getElementById("vastaus2").innerHTML = "<br>" + kala_lkm + " kpl," + kala_paino + " g<br>";    
+            }
+        }
+
+        function lisaaKala(){
+            var laji = document.getElementById("laji").value;
+            var paino = parseInt(document.getElementById("paino").value);
+            kalat.push({"laji" : laji, "koko": paino});
+        }
+
+        
+    </script>
+</html>

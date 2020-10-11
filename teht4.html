@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tehtävä 4</title>
+</head>
+<!--if-lause ja date: Tee ohjelma, jolla voidaan selvittää tämän hetkinen kellonaika
+Sydneyssä. Sydneyssä kelloaika on 7 tuntia Suomea edellä. Jos Sydneyssa ollaan jo
+seuraavassa vuorokaudessa, lisää vastaukseen +1 kuten alla on. Huomaa, että
+kellonaika on otettava koneen kellosta eli mitä kello juuri nyt on.-->
+<body>
+    <h3>Kellonaika Sydneyssä</h3>
+    <div id="vastaus"></div>
+
+    <script>
+        var d = new Date();
+        var tunnit_suomi = d.getHours();
+        var tunnit_sydney;
+        if (tunnit_suomi + 7 > 23)
+            tunnit_sydney = tunnit_suomi + 7 - 24;
+        else
+            tunnit_sydney = tunnit_suomi + 7;
+        var minuutit = d.getMinutes();
+
+        document.getElementById("vastaus").innerHTML = "Kello Suomessa on " + tunnit_suomi + ":" + minuutit + "<br>Kello Sydeneyssä on " + tunnit_sydney + ":" + minuutit;
+        
+    </script>
+</body>
+
+</html>

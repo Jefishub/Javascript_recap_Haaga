@@ -1,0 +1,53 @@
+<!--1. if-lause: Tee ohjelma, joka kysyy käyttäjältä syntymäkuukauden numeron ja kertoo
+vuodenajan, jolloin käyttäjä on syntynyt.
+Maalis-, huhti ja toukokuu: kevät
+kesä-, heinä- ja elokuu: kesä
+syy-, loka- ja marraskuu: syksy
+joulu-, tammi- ja helmikuu: talvi
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tehtävä 1</title>
+<!-- 
+
+ -->
+</head>
+<body> 
+	<h3>Vuodenaika</h3>
+
+	<form>
+		<label>Syntymäkuukausi (1-12):</label> 
+		<input type="text" id="kuukausi" size="5"> 
+		<input type="button" value="Anna vuodenaika" onclick="kerroVuodenaika()">
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<div id="vastaus"></div>
+	
+	 <script type="text/javascript">
+	// Funktio
+	function kerroVuodenaika() {
+		// Lomakekentän arvo
+		var muuttuja = document.getElementById("kuukausi").value;
+        var vuodenaika;
+
+        if (muuttuja == "12" || muuttuja == "1" || muuttuja == "2")
+            vuodenaika = "Vuodenaika oli talvi";
+        else if (muuttuja == "3" || muuttuja == "4" || muuttuja == "5")
+            vuodenaika = "Vuodenaika oli kevät";
+        else if (muuttuja == "6" || muuttuja == "7" || muuttuja == "8")
+            vuodenaika = "Vuodenaika oli kesä";
+        else if (muuttuja == "9" || muuttuja == "10" || muuttuja == "11")
+            vuodenaika = "Vuodenaika oli syksy";
+        else
+            vuodenaika = "Ei kelvollinen arvo. Syötä numero väliltä 1 - 12"
+		
+		// Vastauksen kirjoittaminen html-sivulle
+		document.getElementById("vastaus").innerHTML = vuodenaika;
+	}
+	</script>
+</body>
+</html>

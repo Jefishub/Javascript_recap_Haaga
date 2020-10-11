@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 7</title>
+        <!--taulukko: Tee ohjelma, jolla voidaan tilastoida tankkaukset. Ohjelma listaa kaikki tankkaukset.
+Ohjelma kertoo keskimääräisen, pienimmän ja suurimman tankkauksen. Kun painetaan lisää
+painiketta, tankkaus lisätään taulukkoon, tähän mennessä tehdyt tankkaukset näytetään ja
+tilasto tyhjennetään HTML-sivulta. -->
+    </head>
+    <body>
+        <h3>Tankkausohjelma</h3>
+        <form>
+        <label>Tankkaus:</label>
+        <input type="text" id="tankkaus" size="5">
+        <input type="button" value="Lisää" onclick="lisaaTankkaus()">
+        <input type="button" value="Tilasto" onclick="naytaTilasto()">
+        </form>
+        <div id="vastaus1"></div>
+        <div id="vastaus2"></div>
+
+        <script type="text/javascript">
+        var tankki_lista = [];
+        function lisaaTankkaus(){
+            var tankkaus = parseFloat(document.getElementById("tankkaus").value);
+            tankki_lista.push(tankkaus);
+            var teksti = "";
+            for (var x = 0; x < tankki_lista.length; x++) {
+                teksti += tankki_lista[x] + " ";
+            }
+            document.getElementById("vastaus1").innerHTML = "<br>Tankkaukset ovat " + teksti + "<br>";
+        }
+
+        function naytaTilasto(){
+            var pienin = tankki_lista[0];
+            var suurin = tankki_lista[0];
+            var summa = 0;
+            var i,j;
+            for (i=0;i<tankki_lista.length;i++){
+                summa += tankki_lista[i];                
+            }
+
+            var keskiarvo = (summa / tankki_lista.length).toFixed(0);
+
+            for (j=0; j<tankki_lista.length-1;j++){
+                if (pienin > tankki_lista[j+1])
+                    pienin = tankki_lista[j+1];
+                if (suurin < tankki_lista[j+1])
+                    suurin = tankki_lista[j+1];
+            }
+            document.getElementById("vastaus2").innerHTML = "<br>Pienin tankkaus on " + pienin + ".<br>" + 
+                                                            "Suurin tankkaus on " + suurin + ".<br>" + 
+                                                            "Keskitankkaus on " + keskiarvo + ".";        
+
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tehtävä 3</title>
+</head>
+<!--date: Tee ohjelma, joka kertoo, mikä viikonpäivä on käyttäjän antama päivämäärä. 
+-->
+<body>
+    <h3>Viikonpäivä</h3>
+
+    <form>
+        <label>Päivämäärä (vvvv-kk-pp):</label>
+        <input type="text" id="pvm" size="10">
+        <input type="button" value="Kerro viikonpäivä" onclick="kerroViikonpaiva()">
+    </form>
+
+    <div id="vastaus"></div>
+
+    <script type="text/javascript">
+    
+    var weekday = new Array(7);
+    weekday[0] = "sunnuntai";
+    weekday[1] = "maanantai";
+    weekday[2] = "tiistai";
+    weekday[3] = "keskiviikko";
+    weekday[4] = "torstai";
+    weekday[5] = "perjantai";
+    weekday[6] = "lauantai";
+
+    function kerroViikonpaiva(){
+        var pvm = document.getElementById("pvm").value;
+        var d = new Date(pvm.slice(0,4),pvm.slice(5,7),pvm.slice(9,11))
+        var day = d.getDay()
+
+        document.getElementById("vastaus").innerHTML = "Viikonpäivä on " + weekday[day];
+
+    }
+    
+    
+    </script>
+</body>
+</html>

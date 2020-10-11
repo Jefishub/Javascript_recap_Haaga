@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 11</title>
+        <!--objekti: Listaa asiakkaan tiedot.-->
+    </head>
+    <body>
+        <h3>Objekti</h3>
+        <form>
+            <input type="button" value="Näytä tiedot" onclick="naytaTiedot()">
+        </form>
+
+        <div id="vastaus"></div>
+        <script>
+            var asiakas =
+            {
+                "etunimi": "Matti",
+                "sukunimi": "Mainio",
+
+                "osoite":
+                {
+                    "lahiosoite": "Kunnonkatu 99",
+                    "paikkakunta": "Mainiokylä",
+                    "postinumero": "12345"
+                },
+
+                "puhelin":
+                [
+                    {
+                        "tyyppi": "koti",
+                        "numero": "1234567"
+                    },
+                    {
+                        "tyyppi": "työ",
+                        "numero": "7654321"
+                    }
+                ]
+            };
+
+            function naytaTiedot(){
+                var teksti = "";
+                teksti += "<br>Nimi: " + asiakas.etunimi + asiakas.sukunimi;
+                teksti += "<br>Osoite: " + asiakas.osoite.lahiosoite + ", " + asiakas.osoite.postinumero + " " +  asiakas.osoite.paikkakunta;
+                teksti += "<br>" + asiakas.puhelin[0].numero + "(" +  asiakas.puhelin[0].tyyppi + "), " + asiakas.puhelin[1].numero + "(" + asiakas.puhelin[1].tyyppi + ")";
+                document.getElementById("vastaus").innerHTML = teksti;
+            }
+        </script>
+    </body>
+</html>

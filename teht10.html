@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tehtävä 10</title>
+<!--funktio: Tee Ohjelma, jolla voidaan laskea KELAn maksaman sairaspäivärahan määrä.
+Sairaspäiväraha lasketaan seuraavasti:
+Vuosityötulo e/v Päivärahan laskentakaavat e/arkipv
+enintään 1408 ei päivärahaa
+1409-30000 0.7 x vuosityötulo / 300
+
+Vuosityötulo e/v Päivärahan laskentakaavat e/arkipv
+30001-56443 70.00 + 0.35 * (vuosityötulo - 30000) / 300
+yli 56 443 100.85 + 0.25 * (vuosityötulo - 56443) / 300
+Sairaspäivärahan laskeminen tehdään omassa funktiossa, jolle annetaan parametrina
+vuositulot ja funktio palauttaa sairaspäivärahan per päivä. Toisessa funktiossa lasketaan
+kokonaispäivärahan määrä. Funktio saa parametreina sairaspaivarahan per päivä sekä
+sairaspäivien määrän. Funktio palauttaa kokonaispäivärahan, joka saadaan kertomalla
+sairaspäiväraha päivien määrällä. Ohjelmassa on siis kolme funktioita, yksi painikkeelle ja
+toinen päivärahan laskentaa ja kolmas kokonaissummaa varten. Jos ratkaisussa ei käytetä
+funktioita, ratkaisusta ei saa pisteitä. -->
+    </head>
+    <body>
+        <h3>Sairaspäivärahalaskuri</h3>
+        <form>
+            <label for="vuositulot">Vuositulot:</label>
+            <input type="text" id="vuositulot" size="15"><br>
+            <label for="pvm_maara">Sairaspäivien määrä</label>
+            <input type="text" id="pvm_maara" size="15"><br>
+            <input type="button" value="Lakse sairaspäiväraha" onclick="laskeRaha()">
+
+        </form>
+
+        <div id="vastaus"></div>
+    </body>
+
+    <script>
+        function laskeRaha(){
+            var vuositulot = parseInt(document.getElementById("vuositulot").value);
+            var pvm_maara = parseInt(document.getElementById("pvm_maara").value);
+            var raha_per_paiva = laskePaivaraha(vuositulot);
+            document.getElementById("vastaus").innerHTML = "<br>Vuosituloilla " + vuositulot +
+                                                         " sairaspäiväraha per päivä on " + raha_per_paiva.toFixed(2) + 
+                                                         " ja kokonaissumma on " + laskeSumma(raha_per_paiva,pvm_maara).toFixed(2);
+        }
+
+        function laskeSumma(raha_per_paiva,paivien_maara){
+            return raha_per_paiva*paivien_maara;
+        }
+
+        function laskePaivaraha(vuositulot){
+            if (vuositulot < 1409)
+                return 0;
+            else if (vuositulot <= 30000)
+                return vuositulot*0.7/300;
+            else if (vuositulot <= 56443)
+                return 70+(vuositulot-30000)*0.35/300;
+            else
+                return 100.85 + 0.25 * (vuositulot-56443)/300;
+        }
+    </script>
+</html>
